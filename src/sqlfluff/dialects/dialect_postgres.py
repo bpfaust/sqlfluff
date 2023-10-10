@@ -956,7 +956,7 @@ class DropFunctionStatementSegment(BaseSegment):
         Ref("IfExistsGrammar", optional=True),
         Delimited(
             Sequence(
-                Ref("FunctionNameSegment"),
+                Ref("ObjectReferenceSegment"),
                 Ref("FunctionParameterListGrammar", optional=True),
             )
         ),
@@ -4175,6 +4175,7 @@ class ConflictTargetSegment(BaseSegment):
                         OneOf(
                             Ref("ColumnReferenceSegment"),
                             Bracketed(Ref("ExpressionSegment")),
+                            Ref("FunctionSegment"),
                         ),
                         Sequence(
                             "COLLATE",
